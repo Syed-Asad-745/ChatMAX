@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import StoreProvider from "@/redux/StoreProvider";
 
 export const metadata: Metadata = {
   title: "My ChatMAX",
@@ -12,10 +11,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <StoreProvider>
-      <html lang="en" className={` h-full antialiased`}>
-        <body className="min-h-full flex flex-col">{children}</body>
-      </html>
-    </StoreProvider>
+    <html lang="en" className={` h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-white text-black dark:bg-gray-950 dark:text-white">{children}</body>
+    </html>
   );
 }
