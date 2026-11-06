@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { pool } from "@/lib/db";
 import { hashPassword } from "@/lib/auth/password";
+import { isRateLimited, recordAttempt, getClientIp } from "@/lib/auth/rateLimit";
 
 export async function POST(request: Request) {
   try {
@@ -22,6 +23,13 @@ export async function POST(request: Request) {
     if (!password || typeof password !== "string" || password.length < 8) {
       return NextResponse.json({ error: "Invalid Password!" }, { status: 400 });
     }
+
+    const rateLimitKey = `signup:${getClientIp(request)}`;
+
+    if (await isRateLimited(rateLimitKey, 5, 60)) {
+      return NextResponse.json({ error: "Too many signup attempts. Try again later." }, { status: 429 });
+    }
+    await recordAttempt(rateLimitKey);
 
     const normalizedUsername = username.trim();
     const normalizedEmail = email.trim().toLowerCase();

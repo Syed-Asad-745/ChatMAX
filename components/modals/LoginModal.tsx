@@ -9,6 +9,7 @@ import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { userLoggedIn } from "@/redux/slices/loggedInSlice";
+import { useRouter } from "next/navigation";
 
 export default function LoginModal() {
   const isOpen = useSelector((state: RootState) => state.modals.logInModalState);
@@ -17,6 +18,7 @@ export default function LoginModal() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const router = useRouter();
 
   const dispatch = useDispatch();
 
@@ -43,6 +45,7 @@ export default function LoginModal() {
       }
 
       dispatch(userLoggedIn());
+      router.refresh();
       setUsername("");
       setPassword("");
       dispatch(closeLogInModal());
@@ -106,20 +109,10 @@ export default function LoginModal() {
             {error && <p className="text-red-500 text-sm mb-6">{error}</p>}
             <button
               type="submit"
+              disabled={loading}
               className="text-black bg-[#fcd62a] py-2 px-6 rounded-full cursor-pointer font-bold hover:scale-120 transition-all duration-300 ease-in-out"
             >
-              Login
-            </button>
-            <span className="my-2">or</span>
-            <button
-              onClick={() => {
-                dispatch(userLoggedIn());
-                dispatch(closeLogInModal());
-              }}
-              type="button"
-              className="text-black border-2 border-[#fcd62a] py-2 px-6 rounded-full cursor-pointer font-bold hover:scale-120 transition-all duration-300 ease-in-out dark:text-white"
-            >
-              Login as Guest
+              {loading ? "Logging in..." : "Login"}
             </button>
           </form>
         </div>

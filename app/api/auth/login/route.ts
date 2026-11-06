@@ -3,6 +3,7 @@ import { pool } from "@/lib/db";
 import { verifyPassword } from "@/lib/auth/password";
 import { randomBytes, createHash } from "crypto";
 import { cookies } from "next/headers";
+import { isRateLimited, recordAttempt, clearAttempts, getClientIp } from "@/lib/auth/rateLimit";
 
 export async function POST(request: Request) {
   try {
@@ -24,6 +25,12 @@ export async function POST(request: Request) {
 
     const normalizedUsername = username.trim();
 
+    const rateLimitKey = `login:${getClientIp(request)}:${normalizedUsername.toLowerCase()}`;
+
+    if (await isRateLimited(rateLimitKey)) {
+      return NextResponse.json({ error: "Too many attempts. Try again in 15 minutes." }, { status: 429 });
+    }
+
     const result = await pool.query(
       `SELECT id, username, password_hash
        FROM users
@@ -32,6 +39,7 @@ export async function POST(request: Request) {
     );
 
     if (result.rows.length === 0) {
+      await recordAttempt(rateLimitKey);
       return NextResponse.json({ error: "Invalid username or password!" }, { status: 401 });
     }
     const user = result.rows[0];
@@ -39,8 +47,11 @@ export async function POST(request: Request) {
     const isPasswordValid = await verifyPassword(password, user.password_hash);
 
     if (!isPasswordValid) {
+      await recordAttempt(rateLimitKey);
       return NextResponse.json({ error: "Invalid username or password!" }, { status: 401 });
     }
+
+    await clearAttempts(rateLimitKey);
 
     const sessionToken = randomBytes(32).toString("hex");
     const tokenHash = createHash("sha256").update(sessionToken).digest("hex");

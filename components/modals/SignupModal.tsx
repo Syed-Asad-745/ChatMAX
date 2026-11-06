@@ -10,7 +10,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 
-export default function SignUpModal() {
+export default function SignupModal() {
   const isOpen = useSelector((state: RootState) => state.modals.signUpModalState);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");

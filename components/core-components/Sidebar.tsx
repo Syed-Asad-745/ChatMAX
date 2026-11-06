@@ -10,12 +10,29 @@ import BookmarksOutlinedIcon from "@mui/icons-material/BookmarksOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { userLoggedOut } from "@/redux/slices/loggedInSlice";
 import { AppDispatch } from "@/redux/store";
 
 export default function Sidebar() {
   const dispatch: AppDispatch = useDispatch();
+
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const links = [
+    { href: "/", icon: <HomeOutlinedIcon sx={{ fontSize: 24 }} />, label: "Home" },
+    // { href: "/explore", icon: <SearchOutlinedIcon sx={{ fontSize: 24 }} />, label: "Explore" },
+    // { href: "/notifications", icon: <NotificationsActiveOutlinedIcon sx={{ fontSize: 24 }} />, label: "Notifications" },
+    // { href: "/messages", icon: <MarkunreadOutlinedIcon sx={{ fontSize: 24 }} />, label: "Messages" },
+    // { href: "/bookmarks", icon: <BookmarksOutlinedIcon sx={{ fontSize: 24 }} />, label: "Bookmarks" },
+    { href: "/profile", icon: <AccountCircleOutlinedIcon sx={{ fontSize: 24 }} />, label: "Profile" },
+    // { href: "/more", icon: <MoreHorizOutlinedIcon sx={{ fontSize: 24 }} />, label: "More" },
+  ];
+
+  const stylingClasses = "flex items-center cursor-pointer border-2 border-transparent hover:scale-110 gap-2 px-4 py-2 w-full rounded-xl transition duration-100";
 
   async function handleLogout() {
     const response = await fetch("/api/auth/logout", {
@@ -24,69 +41,41 @@ export default function Sidebar() {
 
     if (response.ok) {
       dispatch(userLoggedOut());
+      router.refresh();
     }
   }
 
   return (
-    <nav className="h-[calc(100vh-32px)] hidden sm:flex flex-col sticky top-4 m-4 rounded-xl border-2 border-gray-300 bg-gray-100 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700">
-      <div className="mx-auto my-6">
-        <Image
-          src={"/assets/FullLogo.png"}
-          width={999}
-          height={999}
-          alt="Logo"
-          className="rounded-full h-12 w-fit"
-        />
-      </div>
+    <nav className="h-[calc(100vh-32px)] min-w-60 flex flex-col sticky top-4 m-4 rounded-xl border-2 border-gray-300 bg-gray-100 dark:bg-gray-900  dark:border-gray-700">
+      <Image
+        src={"/assets/FullLogo.png"}
+        width={999}
+        height={999}
+        alt="Logo"
+        className="rounded-full h-12 w-fit mx-auto my-6"
+      />
+      <hr className="w-[80%] mx-auto text-gray-300 mb-6" />
 
-      <div className="mx-6 flex flex-col gap-2 h-full">
-        <SidebarLink
-          icon={<HomeOutlinedIcon sx={{ fontSize: 24 }} />}
-          text="Home"
-        />
-        <SidebarLink
-          icon={<SearchOutlinedIcon sx={{ fontSize: 24 }} />}
-          text="Explore"
-        />
-        <SidebarLink
-          icon={<NotificationsActiveOutlinedIcon sx={{ fontSize: 24 }} />}
-          text="Notifications"
-        />
-        <SidebarLink
-          icon={<MarkunreadOutlinedIcon sx={{ fontSize: 24 }} />}
-          text="Messages"
-        />
-        <SidebarLink
-          icon={<BookmarksOutlinedIcon sx={{ fontSize: 24 }} />}
-          text="Bookmarks"
-        />
-        <SidebarLink
-          icon={<AccountCircleOutlinedIcon sx={{ fontSize: 24 }} />}
-          text="Profile"
-        />
-        <SidebarLink
-          icon={<MoreHorizOutlinedIcon sx={{ fontSize: 24 }} />}
-          text="More"
-        />
+      <div className="mx-6 flex flex-col items-center gap-2 h-full">
+        {links.map(({ href, icon, label }) => (
+          <Link
+            key={href}
+            href={href}
+            className={`${pathname === href && "text-yellow-500 translate-x-4"} ${stylingClasses}`}
+          >
+            {icon}
+            {label}
+          </Link>
+        ))}
 
-        <div
+        <span
           onClick={handleLogout}
-          className="mt-auto mb-8"
+          className={`mt-auto mb-8 ${stylingClasses}`}
         >
-          <SidebarLink
-            icon={<LogoutIcon sx={{ fontSize: 24 }} />}
-            text="Logout"
-          />
-        </div>
+          <LogoutIcon sx={{ fontSize: 24 }} />
+          Logout
+        </span>
       </div>
     </nav>
-  );
-}
-
-function SidebarLink({ icon, text }: { icon: React.ReactNode; text: string }) {
-  return (
-    <div className="flex items-center cursor-pointer border-2 border-transparent hover:border-[#fcd62a] gap-2 px-4 py-2 rounded-xl transition duration-100">
-      {icon} <span>{text}</span>
-    </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import LoginModal from "../modals/LoginModal";
-import SignupModal from "../modals/SignUpModal";
+import SignupModal from "../modals/SignupModal";
 import { useDispatch, useSelector } from "react-redux";
 import { userLoggedIn, userLoggedOut } from "@/redux/slices/loggedInSlice";
 import { AppDispatch, RootState } from "@/redux/store";
@@ -24,7 +24,6 @@ export default function SignUpPrompt() {
         }
       } catch (error) {
         console.error("Session verification failed:", error);
-        dispatch(userLoggedOut());
       } finally {
         setIsChecking(false);
       }

@@ -11,7 +11,11 @@ export default function Widgets() {
     >
       <div className="flex items-center bg-white mx-6 my-4 rounded-full h-12 px-6 gap-2 dark:bg-gray-950">
         <SearchOutlinedIcon sx={{ fontSize: 24 }} />
-        <input type="text" placeholder="Search ChatMAX..." className="outline-none" />
+        <input
+          type="text"
+          placeholder="Search ChatMAX..."
+          className="outline-none"
+        />
       </div>
 
       <div className="m-6 rounded-3xl p-6 bg-white flex flex-col dark:bg-gray-950">
@@ -36,7 +40,7 @@ function WhatsHappeningWidgetComponent() {
     <div className="flex flex-col mb-4">
       <div className="flex justify-between items-center">
         <span className="text-gray-500 text-[0.7rem]">Trending in Hyderabad</span>
-        <span className="flex justify-center items-center w-8 h-8 cursor-pointer hover:bg-gray-300 rounded-full">
+        <span className="flex justify-center items-center w-8 h-8 rounded-full cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-800 transition">
           <MoreHorizOutlinedIcon sx={{ fontSize: 24 }} />
         </span>
       </div>
@@ -50,7 +54,13 @@ function RecommendedForYouWidgetComponent() {
   return (
     <div className="flex justify-between items-center mb-4">
       <div className="flex items-center gap-3">
-        <Image src={"/assets/ProfilePic.jpg"} width={56} height={56} alt="Profile Picture" className="h-14 w-14 rounded-full" />
+        <Image
+          src={"/assets/ProfilePic.jpg"}
+          width={56}
+          height={56}
+          alt="Profile Picture"
+          className="h-14 w-14 rounded-full"
+        />
         <div className="flex flex-col">
           <span>Syed Asad</span>
           <span className="text-gray-500">@s.asad.leo</span>
