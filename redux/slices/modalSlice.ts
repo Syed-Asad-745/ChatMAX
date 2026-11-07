@@ -6,6 +6,7 @@ interface ModalState {
   logInModalState: boolean;
   editPostId: number | null;
   deletePostId: number | null;
+  bioModalState: boolean;
 }
 
 const initialState: ModalState = {
@@ -13,6 +14,7 @@ const initialState: ModalState = {
   logInModalState: false,
   editPostId: null,
   deletePostId: null,
+  bioModalState: false,
 };
 
 const modalSlice = createSlice({
@@ -43,9 +45,15 @@ const modalSlice = createSlice({
     closeDeletePostModal: (state) => {
       state.deletePostId = null;
     },
+    openBioModal: (state) => {
+      state.bioModalState = true;
+    },
+    closeBioModal: (state) => {
+      state.bioModalState = false;
+    },
   },
 });
 
-export const { openSignUpModal, closeSignUpModal, openLogInModal, closeLogInModal, openEditPostModal, closeEditPostModal, openDeletePostModal, closeDeletePostModal } = modalSlice.actions;
+export const { openSignUpModal, closeSignUpModal, openLogInModal, closeLogInModal, openEditPostModal, closeEditPostModal, openDeletePostModal, closeDeletePostModal, openBioModal, closeBioModal } = modalSlice.actions;
 
 export default modalSlice.reducer;

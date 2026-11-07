@@ -46,7 +46,7 @@ export default function Sidebar() {
   }
 
   return (
-    <nav className="h-[calc(100vh-32px)] min-w-60 flex flex-col sticky top-4 m-4 rounded-xl border-2 border-gray-300 bg-gray-100 dark:bg-gray-900  dark:border-gray-700">
+    <nav className="h-[calc(100vh-32px)] min-w-60 flex flex-col sticky top-4 m-4 font-extrabold rounded-xl border-2 border-gray-300 bg-gray-100 dark:bg-gray-900  dark:border-gray-700">
       <Image
         src={"/assets/FullLogo.png"}
         width={999}
@@ -54,14 +54,14 @@ export default function Sidebar() {
         alt="Logo"
         className="rounded-full h-12 w-fit mx-auto my-6"
       />
-      <hr className="w-[80%] mx-auto text-gray-300 mb-6" />
+      <hr className="w-[80%] mx-auto text-gray-300 dark:text-gray-700 mb-6" />
 
       <div className="mx-6 flex flex-col items-center gap-2 h-full">
         {links.map(({ href, icon, label }) => (
           <Link
             key={href}
             href={href}
-            className={`${pathname === href && "text-yellow-500 translate-x-4"} ${stylingClasses}`}
+            className={`${pathname === href && "text-blue-600 translate-x-4 value"} ${stylingClasses}`}
           >
             {icon}
             {label}

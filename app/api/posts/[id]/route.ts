@@ -58,8 +58,8 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
       return NextResponse.json({ error: "Post content cannot be empty!" }, { status: 400 });
     }
 
-    if (content.trim().length > 120) {
-      return NextResponse.json({ error: "Post cannot exceed 120 characters!" }, { status: 400 });
+    if (content.trim().length > 300) {
+      return NextResponse.json({ error: "Post cannot exceed 300 characters!" }, { status: 400 });
     }
 
     const result = await pool.query(

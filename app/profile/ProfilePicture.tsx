@@ -19,12 +19,12 @@ export default function ProfilePicture() {
         className="rounded-full h-32 w-32 object-cover"
         unoptimized
       />
-      {/* <button
+      <button
         onClick={handleProfilePictureChange}
-        className="text-gray-300 bg-gray-600 rounded-full cursor-pointer absolute bottom-1 right-1 p-2 hover:bg-gray-500 transition"
+        className="text-gray-300 bg-gray-600 rounded-full cursor-pointer absolute bottom-0 right-0 p-2 hover:bg-gray-500 transition"
       >
         <EditOutlinedIcon />
-      </button> */}
+      </button>
     </div>
   );
 }

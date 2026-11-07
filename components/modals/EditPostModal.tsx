@@ -85,7 +85,7 @@ export default function EditPostModal({ content, postId }: EditPostModalProps) {
               onChange={(e) => setEditedContent(e.target.value)}
               className="outline-none border-2 border-gray-400 w-full mt-2 rounded-2xl p-6"
               rows={4}
-              maxLength={120}
+              maxLength={300}
             />
             <div className="flex gap-4 mt-4 self-center">
               <button

@@ -11,8 +11,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Post content cannot be empty!" }, { status: 400 });
     }
 
-    if (content.trim().length > 120) {
-      return NextResponse.json({ error: "Post cannot exceed 120 characters!" }, { status: 400 });
+    if (content.trim().length > 300) {
+      return NextResponse.json({ error: "Post cannot exceed 300 characters!" }, { status: 400 });
     }
 
     const user = await getCurrentUser();

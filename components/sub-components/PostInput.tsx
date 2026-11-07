@@ -91,7 +91,7 @@ export default function PostInput() {
           className="h-12 w-full mx-6 px-2 outline-none border-b border-gray-500 focus:border-b-2 focus:border-[#fcd726]"
           placeholder="Post a thought..."
           value={postInputValue}
-          maxLength={120}
+          maxLength={300}
           onChange={(e) => {
             setPostInputValue(e.target.value);
           }}
