@@ -10,13 +10,13 @@ export default function ProfilePicture() {
 
   const [imageSrc, setImageSrc] = useState("/assets/DefaultProfilePic.png");
   return (
-    <div className="relative">
+    <div className="relative min-w-fit max-h-32">
       <Image
         src={imageSrc}
         width={128}
         height={128}
         alt="Profile picture"
-        className="rounded-full h-32 w-32 object-cover"
+        className="rounded-full h-32 w-32 object-cover "
         unoptimized
       />
       <button

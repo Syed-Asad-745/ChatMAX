@@ -60,6 +60,7 @@ export default function BioModal({ bio }: BioModalProps) {
             value={bioInput}
             onChange={(e) => setBioInput(e.target.value)}
             rows={6}
+            maxLength={160}
             className="w-full outline-none border-2 rounded-2xl p-6 border-gray-300 dark:border-gray-700"
           />
           <div className="flex gap-6 mt-8">

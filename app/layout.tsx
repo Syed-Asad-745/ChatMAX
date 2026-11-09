@@ -24,7 +24,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <div className="flex min-h-screen max-w-360 w-full self-center bg-transparent">
             <Sidebar />
             {children}
-            {/* <Widgets /> */}
+            <Widgets />
           </div>
           <SignUpPrompt />
         </StoreProvider>

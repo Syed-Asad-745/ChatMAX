@@ -24,12 +24,12 @@ export default function Sidebar() {
 
   const links = [
     { href: "/", icon: <HomeOutlinedIcon sx={{ fontSize: 24 }} />, label: "Home" },
-    // { href: "/explore", icon: <SearchOutlinedIcon sx={{ fontSize: 24 }} />, label: "Explore" },
-    // { href: "/notifications", icon: <NotificationsActiveOutlinedIcon sx={{ fontSize: 24 }} />, label: "Notifications" },
-    // { href: "/messages", icon: <MarkunreadOutlinedIcon sx={{ fontSize: 24 }} />, label: "Messages" },
-    // { href: "/bookmarks", icon: <BookmarksOutlinedIcon sx={{ fontSize: 24 }} />, label: "Bookmarks" },
+    { href: "/explore", icon: <SearchOutlinedIcon sx={{ fontSize: 24 }} />, label: "Explore" },
+    { href: "/notifications", icon: <NotificationsActiveOutlinedIcon sx={{ fontSize: 24 }} />, label: "Notifications" },
+    { href: "/messages", icon: <MarkunreadOutlinedIcon sx={{ fontSize: 24 }} />, label: "Messages" },
+    { href: "/bookmarks", icon: <BookmarksOutlinedIcon sx={{ fontSize: 24 }} />, label: "Bookmarks" },
     { href: "/profile", icon: <AccountCircleOutlinedIcon sx={{ fontSize: 24 }} />, label: "Profile" },
-    // { href: "/more", icon: <MoreHorizOutlinedIcon sx={{ fontSize: 24 }} />, label: "More" },
+    { href: "/more", icon: <MoreHorizOutlinedIcon sx={{ fontSize: 24 }} />, label: "More" },
   ];
 
   const stylingClasses = "flex items-center cursor-pointer border-2 border-transparent hover:scale-110 gap-2 px-4 py-2 w-full rounded-xl transition duration-100";
