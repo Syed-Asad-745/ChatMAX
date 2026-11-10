@@ -46,7 +46,7 @@ export default function Sidebar() {
   }
 
   return (
-    <nav className="h-[calc(100vh-32px)] min-w-60 flex flex-col sticky top-4 m-4 font-extrabold rounded-xl border-2 border-gray-300 bg-gray-100 dark:bg-gray-900  dark:border-gray-700">
+    <nav className="h-[calc(100vh-32px)] min-w-60 flex flex-col sticky top-4 m-4 font-extrabold rounded-xl border-2 border-gray-300 bg-gray-100/60 dark:bg-gray-900/70  dark:border-gray-700">
       <Image
         src={"/assets/FullLogo.png"}
         width={999}

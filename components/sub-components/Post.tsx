@@ -24,7 +24,7 @@ export default function Post({ currentUserId, authorId, postId, likedByMe, profi
   const isOwner = currentUserId === authorId;
 
   return (
-    <div className="relative flex items-center max-w-3/4 w-full mb-6 shadow-[-4px_0px_0px_0px_#fcd62a] dark:shadow-[-4px_0px_0px_0px_#fcd62a] bg-white p-6 rounded-[16] dark:bg-gray-950 z-0">
+    <div className="relative flex items-center max-w-3/4 w-full mb-6 shadow-[-4px_0px_0px_0px_#fcd62a] dark:shadow-[-4px_0px_0px_0px_#fcd62a] bg-white/60 p-6 rounded-[16] dark:bg-gray-950">
       <Image
         src={profilePic || "/assets/DefaultProfilePic.png"}
         width={96}
