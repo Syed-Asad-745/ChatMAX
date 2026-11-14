@@ -24,20 +24,33 @@ export default function Post({ currentUserId, authorId, postId, likedByMe, profi
   const isOwner = currentUserId === authorId;
 
   return (
-    <div className="relative flex items-center max-w-3/4 w-full mb-6 shadow-[-4px_0px_0px_0px_#fcd62a]/80 bg-white/60 text-black p-6 rounded-4xl dark:bg-black/60 dark:text-white">
-      <Image
-        src={profilePic || "/assets/DefaultProfilePic.png"}
-        width={96}
-        height={96}
-        alt={`${username}'s profile picture`}
-        className="rounded-full self-start"
-      />
-      <div className="ml-4 mt-2 w-full">
-        <div className="flex items-center gap-2">
-          <span className="font-bold">{username}</span> <span className="text-gray-500">• {createdAt}</span>
+    <div className="flex flex-col mx-4 md:mx-12 mb-4 shadow-[-4px_0px_0px_0px_#fcd62a]/80 bg-white/60 text-black p-6 rounded-4xl dark:bg-black/60 dark:text-white text-xs md:text-lg">
+      <div className="flex items-center gap-2">
+        <Image
+          src={profilePic || "/assets/DefaultProfilePic.png"}
+          width={64}
+          height={64}
+          alt={`${username}'s profile picture`}
+          className="h-10 w-10 md:h-16 md:w-16 rounded-full self-start"
+        />
+        <div className="flex flex-col">
+          <span className="font-bold">{username}</span> <span className="text-gray-500 text-xs">{createdAt}</span>
         </div>
+        <div className="ml-auto mr-">
+          {isOwner && (
+            <div className="flex gap-2">
+              <EditPostModal
+                content={content}
+                postId={postId}
+              />
+              <DeletePostModal postId={postId} />
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="w-full">
         <div>
-          <p className="mt-2 wrap-break-word max-w">{content}</p>
+          <p className="mt-2">{content}</p>
         </div>
         <div className="flex items-center gap-12 mt-4">
           <span className="cursor-pointer">
@@ -54,17 +67,6 @@ export default function Post({ currentUserId, authorId, postId, likedByMe, profi
             <SendOutlinedIcon /> {shares}
           </span> */}
         </div>
-      </div>
-      <div className="absolute top-6 right-6">
-        {isOwner && (
-          <div className="flex gap-2">
-            <EditPostModal
-              content={content}
-              postId={postId}
-            />
-            <DeletePostModal postId={postId} />
-          </div>
-        )}
       </div>
     </div>
   );

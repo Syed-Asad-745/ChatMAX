@@ -60,7 +60,7 @@ export default function DeletePostModal({ postId }: DeletePostModalProps) {
         open={isOpen}
         onClose={() => dispatch(closeDeletePostModal())}
       >
-        <div className="h-fit w-120 rounded-3xl px-6 py-12 flex flex-col items-center justify-center gap-6  bg-white text-black dark:bg-black/80 dark:text-white shadow-[0px_0px_12px_grey]">
+        <div className="h-fit w-120 rounded-3xl px-6 py-12 flex flex-col items-center justify-center gap-6  bg-white/80 text-black dark:bg-black/80 dark:text-white shadow-[0px_0px_12px_grey]">
           <p>Are you sure you want to delete this post?</p>
           <div className="flex gap-4">
             <button

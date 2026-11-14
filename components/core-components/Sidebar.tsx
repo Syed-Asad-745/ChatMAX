@@ -50,25 +50,25 @@ export default function Sidebar() {
   }
 
   return (
-    <nav className="h-[calc(100vh-32px)] min-w-60 flex flex-col sticky top-4 m-4 font-extrabold rounded-3xl border-2 bg-white/80 border-white dark:bg-black/80  dark:border-black">
+    <nav className="hidden h-[calc(100vh-32px)] min-w-fit md:flex flex-col sticky top-4 my-4 ml-4 p-2 font-extrabold rounded-3xl border-2 bg-white/80 border-white dark:bg-black/80  dark:border-black">
       <Image
         src={"/assets/FullLogo.png"}
         width={999}
         height={999}
         alt="Logo"
-        className="rounded-full h-12 w-fit mx-auto my-6"
+        className="hidden lg:block rounded-full h-12 w-fit mx-10 my-6"
       />
-      <hr className="w-[80%] mx-auto text-gray-300 dark:text-gray-700 mb-6" />
+      <hr className="hidden lg:block w-[80%] mx-auto mt-4 text-gray-300 dark:text-gray-700" />
 
-      <div className="mx-6 flex flex-col items-center gap-2 h-full">
+      <div className="mx-4 mt-8 flex flex-col items-center gap-2 h-full">
         {links.map(({ href, icon, label }) => (
           <Link
             key={href}
             href={href}
-            className={`${pathname === href && "text-blue-600 translate-x-4 value"} ${stylingClasses}`}
+            className={`${pathname === href && "text-blue-600"} ${stylingClasses}`}
           >
-            {icon}
-            {label}
+            <span className="md:scale-140 mb-2 lg:scale-100 lg:mb-0">{icon}</span>
+            <span className="hidden lg:inline">{label}</span>
           </Link>
         ))}
 
@@ -76,8 +76,10 @@ export default function Sidebar() {
           onClick={handleLogout}
           className={`mt-auto mb-8 ${stylingClasses}`}
         >
-          <LogoutIcon sx={{ fontSize: 24 }} />
-          Logout
+          <span className="md:scale-140 lg:scale-100">
+            <LogoutIcon sx={{ fontSize: 24 }} />
+          </span>
+          <span className="hidden lg:inline">Logout</span>
         </span>
       </div>
     </nav>

@@ -21,9 +21,10 @@ export default async function HomePage() {
   );
 
   const posts = result.rows;
+  console.log(posts);
 
   return (
-    <div className="flex flex-col items-center flex-1 my-4 pb-16 rounded-3xl min-h-[calc(100vh-32px)] h-fit border-2 border-white bg-white/70 text-black dark:border-black dark:bg-black/70 dark:text-white overflow-clip">
+    <div className="flex flex-col items-center flex-1 md:m-4 pb-10 md:rounded-3xl min-h-[calc(100vh-32px)] border-2 border-white bg-white/70 text-black dark:border-black dark:bg-black/70 dark:text-white overflow-clip">
       <h1 className="w-full bg-white/50 dark:bg-black/50  py-6 px-12 font-bold">Home</h1>
       <PostInput />
       {posts.map((post) => (
@@ -36,7 +37,7 @@ export default async function HomePage() {
           likedByMe={post.liked_by_me}
           profilePic={post.profile_pic_url}
           username={post.username}
-          createdAt={String(post.created_at).split("G")[0]}
+          createdAt={String(post.created_at.toLocaleString())}
           content={post.content}
           comments={post.comments_count}
           shares={post.shares_count}
