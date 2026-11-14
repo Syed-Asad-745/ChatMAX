@@ -60,20 +60,20 @@ export default function DeletePostModal({ postId }: DeletePostModalProps) {
         open={isOpen}
         onClose={() => dispatch(closeDeletePostModal())}
       >
-        <div className="h-50 w-120 rounded-xl p-6 flex flex-col items-center justify-center gap-6  bg-white text-black dark:bg-gray-900 dark:text-white">
+        <div className="h-fit w-120 rounded-3xl px-6 py-12 flex flex-col items-center justify-center gap-6  bg-white text-black dark:bg-black/80 dark:text-white shadow-[0px_0px_12px_grey]">
           <p>Are you sure you want to delete this post?</p>
           <div className="flex gap-4">
             <button
               onClick={() => dispatch(closeDeletePostModal())}
               disabled={isDeleting}
-              className="w-30 h-15 rounded-full cursor-pointer hover:scale-110 transition bg-[#fcd725] text-black"
+              className="px-12 py-4 rounded-full cursor-pointer hover:scale-110 transition bg-[#fcd725] text-black"
             >
               cancel
             </button>
             <button
               onClick={handleDelete}
               disabled={isDeleting}
-              className="w-30 h-15 rounded-full cursor-pointer font-bold hover:scale-110 transition bg-red-500 text-white"
+              className="px-12 py-4 rounded-full cursor-pointer font-bold hover:scale-110 transition bg-red-600 text-white"
             >
               {isDeleting ? "Deleting..." : "Delete"}
             </button>

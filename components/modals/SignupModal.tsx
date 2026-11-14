@@ -70,7 +70,7 @@ export default function SignupModal() {
         open={isOpen}
         onClose={() => dispatch(closeSignUpModal())}
       >
-        <div className="relative h-fit w-150 bg-white rounded-xl flex flex-col p-10 dark:bg-gray-900 dark:text-white">
+        <div className="relative flex flex-col rounded-3xl p-10 h-fit w-150 bg-white/80 text-black  dark:bg-black/80 dark:text-white shadow-[0px_0px_12px_grey]">
           <CloseIcon
             onClick={() => dispatch(closeSignUpModal())}
             sx={{ fontSize: 48 }}
@@ -88,7 +88,7 @@ export default function SignupModal() {
               value={username}
               required
               maxLength={30}
-              className="w-full outline-none bg-transparent mb-6 px-4 py-2 rounded-xl border-2 border-gray-300"
+              className="w-full outline-none bg-transparent mb-6 px-4 py-2 rounded-xl border border-white/50"
             />
             <input
               type="email"
@@ -96,9 +96,9 @@ export default function SignupModal() {
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               required
-              className="w-full outline-none bg-transparent mb-6 px-4 py-2 rounded-xl border-2 border-gray-300"
+              className="w-full outline-none bg-transparent mb-6 px-4 py-2 rounded-xl border border-white/50"
             />
-            <div className="w-full flex border-2 border-gray-300 rounded-xl pr-4 items-center h-fit mb-6">
+            <div className="w-full flex border border-white/50 rounded-xl pr-4 items-center h-fit mb-6">
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"

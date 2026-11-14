@@ -69,7 +69,7 @@ export default function LoginModal() {
         open={isOpen}
         onClose={() => dispatch(closeLogInModal())}
       >
-        <div className="relative h-fit w-150 bg-white text-black dark:bg-gray-900 dark:text-white rounded-xl flex flex-col  p-10">
+        <div className="relative h-fit w-150 bg-white/80 text-black dark:bg-black/80 dark:text-white shadow-[0px_0px_12px_grey] rounded-3xl flex flex-col  p-10">
           <CloseIcon
             onClick={() => dispatch(closeLogInModal())}
             sx={{ fontSize: 48 }}
@@ -81,16 +81,16 @@ export default function LoginModal() {
             }}
             className="flex flex-col items-center w-full"
           >
-            <h2 className="font-black text-3xl w-full my-6">Log into your account</h2>
+            <h2 className="font-extrabold text-3xl w-full my-6">Log into your account</h2>
             <input
               type="text"
               placeholder="Username"
               required
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full outline-none mb-6 px-4 py-2 rounded-xl border-2 border-gray-300 bg-transparent"
+              className="w-full outline-none mb-6 px-4 py-2 rounded-xl border border-white/50 bg-transparent"
             />
-            <div className="w-full flex border-2 border-gray-300 rounded-xl pr-4 items-center h-fit mb-6">
+            <div className="w-full flex border-2 border-white/50 rounded-xl pr-4 items-center h-fit mb-6">
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"

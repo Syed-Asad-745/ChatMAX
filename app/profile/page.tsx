@@ -7,15 +7,15 @@ export default async function ProfilePage() {
 
   if (!userData) {
     return (
-      <div className="flex flex-col items-center flex-1 my-4 pb-16 rounded-xl min-h-[calc(100vh-32px)] h-fit border-2 border-gray-300 bg-gray-100 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 overflow-clip">
+      <div className="flex flex-col items-center flex-1 my-4 pb-16 rounded-3xl min-h-[calc(100vh-32px)] h-fit border-2 border-white bg-white/70 text-black dark:border-black dark:bg-black/70 dark:text-white overflow-clip">
         <h1 className="m-24 text-3xl">Please log in to view your profile.</h1>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col items-start flex-1 my-4 pb-16 rounded-xl min-h-[calc(100vh-32px)] h-fit border-2 border-gray-300 bg-gray-100 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 overflow-clip">
-      <h1 className="sticky top-0 w-full bg-white/80 dark:bg-gray-950/80 backdrop-blur-xs p-6 pl-12 font-bold ">Profile</h1>
+    <div className="flex flex-col items-center flex-1 my-4 pb-16 rounded-3xl min-h-[calc(100vh-32px)] h-fit border-2 border-white bg-white/70 text-black dark:border-black dark:bg-black/70 dark:text-white overflow-clip">
+      <h1 className="w-full bg-white/50 dark:bg-black/50  py-6 px-12 font-bold">Profile</h1>
       <div className="w-full p-12 flex ">
         <ProfilePicture />
         <div className="ml-6 mt-4">

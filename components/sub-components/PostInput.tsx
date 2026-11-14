@@ -88,7 +88,7 @@ export default function PostInput() {
         />
         <input
           type="text"
-          className="h-12 w-full mx-6 px-2 outline-none border-b border-gray-500 focus:border-b-2 focus:border-[#fcd726]"
+          className="h-12 w-full mx-6 px-2 outline-none border-b border-gray-400 dark:border-gray-700 focus:border-[#fcd727]"
           placeholder="Post a thought..."
           value={postInputValue}
           maxLength={300}

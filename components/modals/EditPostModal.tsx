@@ -77,13 +77,13 @@ export default function EditPostModal({ content, postId }: EditPostModalProps) {
         open={isOpen}
         onClose={() => dispatch(closeEditPostModal())}
       >
-        <div className="h-fit w-150 rounded-xl p-6 bg-white text-black dark:bg-gray-900 dark:text-white">
+        <div className="h-fit w-160 rounded-3xl px-12 py-8 bg-white/80 text-black dark:bg-black/80 dark:text-white shadow-[0px_0px_12px_grey]">
           <p className="ml-6">Edit post:</p>
           <div className="flex flex-col">
             <textarea
               value={editedContent}
               onChange={(e) => setEditedContent(e.target.value)}
-              className="outline-none border-2 border-gray-400 w-full mt-2 rounded-2xl p-6"
+              className="outline-none border-2 border-gray-400 w-full mt-2 rounded-3xl p-6"
               rows={4}
               maxLength={300}
             />
@@ -95,7 +95,7 @@ export default function EditPostModal({ content, postId }: EditPostModalProps) {
                   dispatch(closeEditPostModal());
                 }}
                 disabled={isSaving}
-                className="h-15 w-30 bg-[#fcd725] text-black rounded-full cursor-pointer hover:scale-110 transition"
+                className="px-12 py-4 bg-[#fcd725] text-black rounded-full cursor-pointer hover:scale-110 transition"
               >
                 Cancel
               </button>
@@ -104,7 +104,7 @@ export default function EditPostModal({ content, postId }: EditPostModalProps) {
                 type="button"
                 onClick={handleSave}
                 disabled={isSaving || editedContent.trim() === content.trim()}
-                className="h-15 w-30 bg-green-500 text-white font-bold rounded-full cursor-pointer hover:scale-110 transition"
+                className="px-12 py-4 bg-lime-500 text-white font-bold rounded-full cursor-pointer hover:scale-110 transition"
               >
                 {isSaving ? "Saving..." : "Save"}
               </button>
