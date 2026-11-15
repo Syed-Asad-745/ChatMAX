@@ -55,26 +55,27 @@ export default function BioModal({ bio }: BioModalProps) {
         open={isOpen}
         onClose={() => dispatch(closeBioModal())}
       >
-        <div className="flex flex-col items-center h-fit w-150 bg-white text-black dark:bg-gray-900 dark:text-white rounded-xl p-8">
+        <div className="flex flex-col items-center justify-center gap-3 h-fit w-[calc(100vw-2rem)] md:max-w-xl p-6 mx-auto bg-white/80 text-black dark:bg-black/80 dark:text-white shadow-[0px_0px_12px_grey] rounded-3xl">
+          <h2>Your bio</h2>
           <textarea
             value={bioInput}
             onChange={(e) => setBioInput(e.target.value)}
             rows={6}
             maxLength={160}
-            className="w-full outline-none border-2 rounded-2xl p-6 border-gray-300 dark:border-gray-700"
+            className="w-full outline-none border-2 rounded-2xl p-6 border-black/30 dark:border-white/30"
           />
           <div className="flex gap-6 mt-8">
             <button
               onClick={() => dispatch(closeBioModal())}
               disabled={isSaving}
-              className="px-8 py-3 rounded-full cursor-pointer bg-[#fcd726] text-black hover:scale-110 transition"
+              className="px-8 py-3 rounded-full cursor-pointer bg-[#fcd726] shadow-[0px_0px_6px_#fcd727] text-black hover:scale-110 transition"
             >
               Cancel
             </button>
             <button
               onClick={handleBioSave}
               disabled={isSaving}
-              className="px-8 py-3 rounded-full cursor-pointer bg-green-600 font-bold hover:scale-110 transition"
+              className="px-8 py-3 rounded-full cursor-pointer bg-lime-500 shadow-[0px_0px_6px_#7bcd00] font-bold hover:scale-110 transition"
             >
               {isSaving ? "Saving..." : "Save"}
             </button>

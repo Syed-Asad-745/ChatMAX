@@ -3,6 +3,7 @@ import PostInput from "../components/sub-components/PostInput";
 import Post from "../components/sub-components/Post";
 import { pool } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth/session";
+import MenuButton from "@/components/sub-components/MenuButton";
 
 export default async function HomePage() {
   const user = await getCurrentUser();
@@ -21,11 +22,15 @@ export default async function HomePage() {
   );
 
   const posts = result.rows;
-  console.log(posts);
 
   return (
-    <div className="flex flex-col items-center flex-1 md:m-4 pb-10 md:rounded-3xl min-h-[calc(100vh-32px)] border-2 border-white bg-white/70 text-black dark:border-black dark:bg-black/70 dark:text-white overflow-clip">
-      <h1 className="w-full bg-white/50 dark:bg-black/50  py-6 px-12 font-bold">Home</h1>
+    <div className="flex flex-col items-center flex-1 sm:m-4 pb-10 sm:rounded-3xl min-h-[calc(100vh-32px)] border-2 border-white bg-white/70 text-black dark:border-black dark:bg-black/70 dark:text-white overflow-clip">
+      <div className="w-full flex justify-start items-center gap-4 bg-white/50 dark:bg-black/50 py-6 px-6 font-bold">
+        <span className="sm:hidden">
+          <MenuButton />
+        </span>
+        <span>Home</span>
+      </div>
       <PostInput />
       {posts.map((post) => (
         <Post

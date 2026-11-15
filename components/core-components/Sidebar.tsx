@@ -12,24 +12,27 @@ import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector, UseSelector } from "react-redux";
 import { userLoggedOut } from "@/redux/slices/loggedInSlice";
-import { AppDispatch } from "@/redux/store";
+import { AppDispatch, RootState } from "@/redux/store";
+import { closeSidebar } from "@/redux/slices/modalSlice";
 
 export default function Sidebar() {
   const dispatch: AppDispatch = useDispatch();
+
+  const sidebarState = useSelector((state: RootState) => state.modals.sidebarState);
 
   const router = useRouter();
   const pathname = usePathname();
 
   const links = [
     { href: "/", icon: <HomeOutlinedIcon sx={{ fontSize: 24 }} />, label: "Home" },
-    // { href: "/explore", icon: <SearchOutlinedIcon sx={{ fontSize: 24 }} />, label: "Explore" },
-    // { href: "/notifications", icon: <NotificationsActiveOutlinedIcon sx={{ fontSize: 24 }} />, label: "Notifications" },
-    // { href: "/messages", icon: <MarkunreadOutlinedIcon sx={{ fontSize: 24 }} />, label: "Messages" },
-    // { href: "/bookmarks", icon: <BookmarksOutlinedIcon sx={{ fontSize: 24 }} />, label: "Bookmarks" },
+    { href: "/explore", icon: <SearchOutlinedIcon sx={{ fontSize: 24 }} />, label: "Explore" },
+    { href: "/notifications", icon: <NotificationsActiveOutlinedIcon sx={{ fontSize: 24 }} />, label: "Notifications" },
+    { href: "/messages", icon: <MarkunreadOutlinedIcon sx={{ fontSize: 24 }} />, label: "Messages" },
+    { href: "/bookmarks", icon: <BookmarksOutlinedIcon sx={{ fontSize: 24 }} />, label: "Bookmarks" },
     { href: "/profile", icon: <AccountCircleOutlinedIcon sx={{ fontSize: 24 }} />, label: "Profile" },
-    // { href: "/more", icon: <MoreHorizOutlinedIcon sx={{ fontSize: 24 }} />, label: "More" },
+    { href: "/more", icon: <MoreHorizOutlinedIcon sx={{ fontSize: 24 }} />, label: "More" },
   ];
 
   const stylingClasses = "flex items-center cursor-pointer border-2 border-transparent hover:scale-110 gap-2 px-4 py-2 w-full rounded-xl transition duration-100";
@@ -50,38 +53,50 @@ export default function Sidebar() {
   }
 
   return (
-    <nav className="hidden h-[calc(100vh-32px)] min-w-fit md:flex flex-col sticky top-4 my-4 ml-4 p-2 font-extrabold rounded-3xl border-2 bg-white/80 border-white dark:bg-black/80  dark:border-black">
-      <Image
-        src={"/assets/FullLogo.png"}
-        width={999}
-        height={999}
-        alt="Logo"
-        className="hidden lg:block rounded-full h-12 w-fit mx-10 my-6"
-      />
-      <hr className="hidden lg:block w-[80%] mx-auto mt-4 text-gray-300 dark:text-gray-700" />
+    <div>
+      {sidebarState && (
+        <div
+          className="fixed top-0 right-0 h-screen w-screen z-1 bg-black/30 backdrop-blur-xs"
+          onClick={() => dispatch(closeSidebar())}
+        ></div>
+      )}
+      <nav
+        className={`${sidebarState ? "flex" : "hidden"} h-screen fixed top-0 left-0 z-2 sm:h-[calc(100vh-32px)] min-w-fit sm:flex flex-col sm:sticky sm:top-4 sm:my-4 sm:ml-4 font-extrabold sm:rounded-3xl sm:border-2 bg-white/80 sm:border-white dark:bg-black/80  dark:border-black transition`}
+      >
+        <Image
+          src={"/assets/FullLogo.png"}
+          width={999}
+          height={999}
+          alt="Logo"
+          className="sm:hidden md:hidden lg:block rounded-full h-12 w-fit mx-10 my-6"
+        />
+        <hr className="sm:hidden md:hidden lg:block w-[80%] mx-auto mt-4 text-gray-300 dark:text-gray-700" />
 
-      <div className="mx-4 mt-8 flex flex-col items-center gap-2 h-full">
-        {links.map(({ href, icon, label }) => (
-          <Link
-            key={href}
-            href={href}
-            className={`${pathname === href && "text-blue-600"} ${stylingClasses}`}
+        <div className="mx-4 mt-8 flex flex-col items-center gap-2 h-full">
+          {links.map(({ href, icon, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className={`${pathname === href && "text-blue-600"} ${stylingClasses}`}
+            >
+              <span onClick={() => dispatch(closeSidebar())}>
+                <span className="md:scale-140 mb-2 lg:scale-100 lg:mb-0">{icon}</span>
+                <span className="sm:hidden md:hidden lg:inline">{label}</span>
+              </span>
+            </Link>
+          ))}
+
+          <span
+            onClick={handleLogout}
+            className={`mt-auto mb-8 ${stylingClasses}`}
           >
-            <span className="md:scale-140 mb-2 lg:scale-100 lg:mb-0">{icon}</span>
-            <span className="hidden lg:inline">{label}</span>
-          </Link>
-        ))}
-
-        <span
-          onClick={handleLogout}
-          className={`mt-auto mb-8 ${stylingClasses}`}
-        >
-          <span className="md:scale-140 lg:scale-100">
-            <LogoutIcon sx={{ fontSize: 24 }} />
+            <span className="md:scale-140 lg:scale-100">
+              <LogoutIcon sx={{ fontSize: 24 }} />
+            </span>
+            <span className="sm:hidden md:hidden lg:inline">Logout</span>
           </span>
-          <span className="hidden lg:inline">Logout</span>
-        </span>
-      </div>
-    </nav>
+        </div>
+      </nav>
+    </div>
   );
 }

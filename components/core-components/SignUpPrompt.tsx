@@ -35,13 +35,13 @@ export default function SignUpPrompt() {
   return (
     <>
       {!isChecking && !isLoggedIn && (
-        <div className="fixed bottom-0 w-full text-black bg-[#fcd62a] h-24 flex items-center justify-center">
+        <div className="fixed bottom-0 w-full flex justify-center items-center gap-8 py-4 text-black bg-[#fcd62a]">
           <div className="text-center">
-            <p className="text-[1.3rem]">Don't miss out on the latest chatter going around</p>
-            <p>ChatMAX has the most open and outspoken community!</p>
+            <p className="hidden md:block">Don't miss out on the latest chatter going around</p>
+            <p className="hidden md:block">Become a part of the ChatMAX community by signing up</p>
           </div>
 
-          <div className="absolute right-8 flex">
+          <div className="flex">
             <LoginModal />
             <SignupModal />
           </div>

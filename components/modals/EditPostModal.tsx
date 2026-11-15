@@ -77,13 +77,13 @@ export default function EditPostModal({ content, postId }: EditPostModalProps) {
         open={isOpen}
         onClose={() => dispatch(closeEditPostModal())}
       >
-        <div className="h-fit w-160 rounded-3xl px-12 py-8 bg-white/80 text-black dark:bg-black/80 dark:text-white shadow-[0px_0px_12px_grey]">
-          <p className="ml-6">Edit post:</p>
+        <div className="flex flex-col gap-3 h-fit w-[calc(100vw-2rem)] md:max-w-xl px-6 pt-2 pb-6  mx-auto bg-white/80 text-black dark:bg-black/80 dark:text-white shadow-[0px_0px_12px_grey] rounded-3xl">
+          <p className="ml-2 mt-2">Edit post:</p>
           <div className="flex flex-col">
             <textarea
               value={editedContent}
               onChange={(e) => setEditedContent(e.target.value)}
-              className="outline-none border-2 border-gray-400 w-full mt-2 rounded-3xl p-6"
+              className="outline-none border-2 border-black/30 dark:border-white/30 w-full rounded-2xl px-4 py-2"
               rows={4}
               maxLength={300}
             />
@@ -95,7 +95,7 @@ export default function EditPostModal({ content, postId }: EditPostModalProps) {
                   dispatch(closeEditPostModal());
                 }}
                 disabled={isSaving}
-                className="px-12 py-4 bg-[#fcd725] text-black rounded-full cursor-pointer hover:scale-110 transition"
+                className="px-12 py-4 bg-[#fcd725] shadow-[0px_0px_6px_#fcd727] text-black rounded-full cursor-pointer hover:scale-110 transition"
               >
                 Cancel
               </button>
@@ -104,7 +104,7 @@ export default function EditPostModal({ content, postId }: EditPostModalProps) {
                 type="button"
                 onClick={handleSave}
                 disabled={isSaving || editedContent.trim() === content.trim()}
-                className="px-12 py-4 bg-lime-500 text-white font-bold rounded-full cursor-pointer hover:scale-110 transition"
+                className="px-12 py-4 bg-lime-500 shadow-[0px_0px_6px_#7bcd00] text-white font-bold rounded-full cursor-pointer hover:scale-110 transition"
               >
                 {isSaving ? "Saving..." : "Save"}
               </button>

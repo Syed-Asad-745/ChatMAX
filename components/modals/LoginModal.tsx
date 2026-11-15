@@ -69,48 +69,43 @@ export default function LoginModal() {
         open={isOpen}
         onClose={() => dispatch(closeLogInModal())}
       >
-        <div className="relative h-fit w-150 bg-white/80 text-black dark:bg-black/80 dark:text-white shadow-[0px_0px_12px_grey] rounded-3xl flex flex-col  p-10">
-          <CloseIcon
-            onClick={() => dispatch(closeLogInModal())}
-            sx={{ fontSize: 48 }}
-            className="self-end mt-6 mr-6 rounded-full cursor-pointer absolute -right-2 -top-2"
-          />
+        <div className="flex flex-col h-fit w-[calc(100vw-2rem)] md:max-w-lg px-6 pt-2 pb-6  mx-auto bg-white/80 text-black dark:bg-black/80 dark:text-white shadow-[0px_0px_12px_grey] rounded-3xl">
           <form
             onSubmit={(e) => {
               handleLogin(e);
             }}
-            className="flex flex-col items-center w-full"
+            className="flex flex-col items-center w-full gap-3"
           >
-            <h2 className="font-extrabold text-3xl w-full my-6">Log into your account</h2>
+            <h2 className="font-extrabold text-xl w-full mt-2 text-center">Log into your account</h2>
             <input
               type="text"
               placeholder="Username"
               required
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full outline-none mb-6 px-4 py-2 rounded-xl border border-white/50 bg-transparent"
+              className="w-full outline-none px-4 py-2 rounded-full border-2 border-white/50 bg-transparent font-extralight text-sm"
             />
-            <div className="w-full flex border-2 border-white/50 rounded-xl pr-4 items-center h-fit mb-6">
+            <div className="w-full flex border-2 border-white/50 rounded-full pr-4 items-center h-fit">
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full outline-none bg-transparent px-4 py-2 rounded-xl border-none"
+                className="w-full outline-none bg-transparent px-4 py-2 rounded-xl border-none font-extralight text-sm"
               />
               <span
                 onClick={() => setShowPassword(!showPassword)}
                 className="cursor-pointer"
               >
-                {!showPassword ? <VisibilityOutlinedIcon className="text-gray-400" /> : <VisibilityOffOutlinedIcon className="text-gray-400" />}
+                {!showPassword ? <VisibilityOutlinedIcon className="text-[#7b7b7b]" /> : <VisibilityOffOutlinedIcon className="text-[#7b7b7b]" />}
               </span>
             </div>
             {error && <p className="text-red-500 text-sm mb-6">{error}</p>}
             <button
               type="submit"
               disabled={loading}
-              className="text-black bg-[#fcd62a] py-2 px-6 rounded-full cursor-pointer font-bold hover:scale-120 transition-all duration-300 ease-in-out"
+              className="text-black bg-[#fcd62a] text-sm mt-2 py-2 px-6 rounded-full shadow-[0px_0px_6px_#fcd727] cursor-pointer font-bold hover:scale-120 active:bg-[#dbb700] transition-all duration-300 ease-in-out"
             >
               {loading ? "Logging in..." : "Login"}
             </button>

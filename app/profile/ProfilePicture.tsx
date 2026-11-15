@@ -16,7 +16,7 @@ export default function ProfilePicture() {
         width={128}
         height={128}
         alt="Profile picture"
-        className="rounded-full h-32 w-32 object-cover "
+        className="rounded-full object-cover "
         unoptimized
       />
       <button
