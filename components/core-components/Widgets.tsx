@@ -6,7 +6,7 @@ import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 export default function Widgets() {
   return (
     <div
-      className="m-4 rounded-xl sticky top-4 h-[calc(100vh-32px)] border-2 border-gray-300 bg-gray-100 dark:bg-gray-900
+      className="m-4 rounded-xl sticky top-4 min-h-dvh sm:min-h-[calc(100vh-32px)] border-2 border-gray-300 bg-gray-100 dark:bg-gray-900
      dark:text-gray-300 dark:border-gray-700"
     >
       <div className="flex items-center bg-white mx-6 my-4 rounded-full h-12 px-6 gap-2 dark:bg-gray-950">

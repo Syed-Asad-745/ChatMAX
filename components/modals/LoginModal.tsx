@@ -60,7 +60,7 @@ export default function LoginModal() {
     <div>
       <button
         onClick={() => dispatch(openLogInModal())}
-        className="h-12 w-32 px-4 py-2 cursor-pointer hover:scale-110 hover:bg-white transition-all duration-150 ease-in-out border-3 border-white rounded-full mr-6"
+        className="h-12 w-32 px-4 py-2 cursor-pointer hover:scale-110 hover:bg-white transition-all duration-150 ease-in-out border-3 border-white rounded-full"
       >
         Login
       </button>

@@ -35,8 +35,6 @@ export default function Sidebar() {
     { href: "/more", icon: <MoreHorizOutlinedIcon sx={{ fontSize: 24 }} />, label: "More" },
   ];
 
-  const stylingClasses = "flex items-center cursor-pointer border-2 border-transparent hover:scale-110 gap-2 px-4 py-2 w-full rounded-xl transition duration-100";
-
   async function handleLogout() {
     const confirmedLogout = confirm("Are you sure you want to logout?");
 
@@ -56,12 +54,12 @@ export default function Sidebar() {
     <div>
       {sidebarState && (
         <div
-          className="fixed top-0 right-0 h-screen w-screen z-1 bg-black/30 backdrop-blur-xs"
+          className="fixed top-0 right-0 h-dvh w-dvw z-1 bg-black/30 backdrop-blur-xs"
           onClick={() => dispatch(closeSidebar())}
         ></div>
       )}
       <nav
-        className={`${sidebarState ? "flex" : "hidden"} h-screen fixed top-0 left-0 z-2 sm:h-[calc(100vh-32px)] min-w-fit sm:flex flex-col sm:sticky sm:top-4 sm:my-4 sm:ml-4 font-extrabold sm:rounded-3xl sm:border-2 bg-white/80 sm:border-white dark:bg-black/80  dark:border-black transition`}
+        className={`${sidebarState ? "flex" : "hidden"} fixed top-0 left-0 z-2 min-h-dvh sm:min-h-[calc(100vh-32px)] min-w-fit p-6 sm:flex flex-col sm:sticky sm:top-4 sm:my-4 sm:ml-4 font-extrabold sm:rounded-3xl sm:border-2 bg-white/80 sm:border-white dark:bg-black/80  dark:border-black transition`}
       >
         <Image
           src={"/assets/FullLogo.png"}
@@ -70,32 +68,30 @@ export default function Sidebar() {
           alt="Logo"
           className="sm:hidden md:hidden lg:block rounded-full h-12 w-fit mx-10 my-6"
         />
-        <hr className="sm:hidden md:hidden lg:block w-[80%] mx-auto mt-4 text-gray-300 dark:text-gray-700" />
+        <hr className="sm:hidden md:hidden lg:block w-full mx-auto mt-4 text-gray-300 dark:text-gray-700" />
 
-        <div className="mx-4 mt-8 flex flex-col items-center gap-2 h-full">
+        <div className=" mt-8 flex flex-col items-center gap-2 min-h-full">
           {links.map(({ href, icon, label }) => (
             <Link
               key={href}
               href={href}
-              className={`${pathname === href && "text-blue-600"} ${stylingClasses}`}
+              className={`${pathname === href && "text-blue-600"} flex items-center cursor-pointer border-2 border-transparent hover:scale-110 gap-2 px-4 py-2 w-full rounded-xl transition duration-100 sm:scale-160 lg:scale-100 sm:mb-4 lg:mb-0`}
+              onClick={() => dispatch(closeSidebar())}
             >
-              <span onClick={() => dispatch(closeSidebar())}>
-                <span className="md:scale-140 mb-2 lg:scale-100 lg:mb-0">{icon}</span>
-                <span className="sm:hidden md:hidden lg:inline">{label}</span>
-              </span>
+              <span className="scale-100">{icon}</span>
+              <span className="sm:hidden md:hidden lg:inline">{label}</span>
             </Link>
           ))}
-
-          <span
-            onClick={handleLogout}
-            className={`mt-auto mb-8 ${stylingClasses}`}
-          >
-            <span className="md:scale-140 lg:scale-100">
-              <LogoutIcon sx={{ fontSize: 24 }} />
-            </span>
-            <span className="sm:hidden md:hidden lg:inline">Logout</span>
-          </span>
         </div>
+        <span
+          onClick={handleLogout}
+          className="mt-auto mb-8 flex items-center cursor-pointer border-2 border-transparent hover:scale-110 gap-2 px-4 py-2 w-full rounded-xl transition duration-100"
+        >
+          <span className="sm:scale-160 lg:scale-100">
+            <LogoutIcon sx={{ fontSize: 24 }} />
+          </span>
+          <span className="sm:hidden md:hidden lg:inline">Logout</span>
+        </span>
       </nav>
     </div>
   );
