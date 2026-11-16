@@ -24,7 +24,7 @@ export default function Post({ currentUserId, authorId, postId, likedByMe, profi
   const isOwner = currentUserId === authorId;
 
   return (
-    <div className="flex flex-col mx-4 sm:mx-8 mb-4 shadow-[-4px_0px_0px_0px_#fcd62a]/80 bg-white/60 text-black p-6 rounded-4xl dark:bg-black/60 dark:text-white text-xs sm:text-sm">
+    <div className="flex flex-col mx-4 sm:mx-8 mb-4 w-full shadow-[-4px_0px_0px_0px_#fcd62a]/80 bg-white/60 text-black p-6 rounded-4xl dark:bg-black/60 dark:text-white text-xs sm:text-sm">
       <div className="flex items-center gap-2">
         <Image
           src={profilePic || "/assets/DefaultProfilePic.png"}

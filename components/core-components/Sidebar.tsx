@@ -59,18 +59,18 @@ export default function Sidebar() {
         ></div>
       )}
       <nav
-        className={`${sidebarState ? "flex" : "hidden"} fixed top-0 left-0 z-2 min-h-dvh sm:min-h-[calc(100vh-32px)] min-w-fit p-6 sm:flex flex-col sm:sticky sm:top-4 sm:my-4 sm:ml-4 font-extrabold sm:rounded-3xl sm:border-2 bg-white/80 sm:border-white dark:bg-black/80  dark:border-black transition`}
+        className={`${sidebarState ? "flex" : "hidden"} fixed top-0 left-0 z-2 min-h-dvh sm:min-h-[calc(100vh-32px)] min-w-fit p-6 sm:flex flex-col sm:sticky sm:top-4 sm:my-4 sm:ml-4 font-extrabold sm:rounded-3xl sm:border-2 bg-white/80 sm:border-white dark:bg-black/80  dark:border-black`}
       >
         <Image
           src={"/assets/FullLogo.png"}
-          width={999}
-          height={999}
+          width={150}
+          height={150}
           alt="Logo"
-          className="sm:hidden md:hidden lg:block rounded-full h-12 w-fit mx-10 my-6"
+          className="sm:hidden md:hidden lg:block rounded-full mx-4 my-6"
         />
-        <hr className="sm:hidden md:hidden lg:block w-full mx-auto mt-4 text-gray-300 dark:text-gray-700" />
+        <hr className="sm:hidden md:hidden lg:block w-full mx-auto mt-4 text-gray-400 dark:text-gray-700" />
 
-        <div className=" mt-8 flex flex-col items-center gap-2 min-h-full">
+        <div className=" mt-8 flex flex-col items-center min-h-full">
           {links.map(({ href, icon, label }) => (
             <Link
               key={href}
