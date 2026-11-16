@@ -63,14 +63,14 @@ export default function Sidebar() {
       >
         <Image
           src={"/assets/FullLogo.png"}
-          width={150}
-          height={150}
+          width={100}
+          height={100}
           alt="Logo"
-          className="sm:hidden md:hidden lg:block rounded-full mx-4 my-6"
+          className="sm:hidden md:hidden lg:block w-auto h-auto rounded-full mx-4 my-2"
         />
-        <hr className="sm:hidden md:hidden lg:block w-full mx-auto mt-4 text-gray-400 dark:text-gray-700" />
+        <hr className="sm:hidden md:hidden lg:block w-full mx-auto my-4 text-gray-400 dark:text-gray-700" />
 
-        <div className=" mt-8 flex flex-col items-center min-h-full">
+        <div className=" flex flex-col items-center min-h-full">
           {links.map(({ href, icon, label }) => (
             <Link
               key={href}

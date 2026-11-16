@@ -24,14 +24,14 @@ export default function Post({ currentUserId, authorId, postId, likedByMe, profi
   const isOwner = currentUserId === authorId;
 
   return (
-    <div className="flex flex-col mx-4 sm:mx-8 mb-4 w-full shadow-[-4px_0px_0px_0px_#fcd62a]/80 bg-white/60 text-black p-6 rounded-4xl dark:bg-black/60 dark:text-white text-xs sm:text-sm">
+    <div className="flex flex-col mx-4 sm:mx-8 mb-4 w-full shadow-[-4px_0px_0px_0px_#fcd62a]/80 bg-white/60 text-black p-6 rounded-4xl dark:bg-black/60 dark:text-white text-xs sm:text-sm md:text-base lg:text-lg">
       <div className="flex items-center gap-2">
         <Image
           src={profilePic || "/assets/DefaultProfilePic.png"}
-          width={64}
-          height={64}
+          width={80}
+          height={80}
           alt={`${username}'s profile picture`}
-          className="h-10 w-10 md:h-16 md:w-16 rounded-full self-start"
+          className="h-10 w-10 sm:h-20 sm:w-20 rounded-full self-start"
         />
         <div className="flex flex-col">
           <span className="font-bold">{username}</span> <span className="text-gray-500 text-xs">{createdAt}</span>
@@ -50,9 +50,9 @@ export default function Post({ currentUserId, authorId, postId, likedByMe, profi
       </div>
       <div className="w-full">
         <div>
-          <p className="mt-2">{content}</p>
+          <p className="m-6">{content}</p>
         </div>
-        <div className="flex items-center gap-12 mt-4">
+        <div className="flex items-center gap-12 ml-6">
           <span className="cursor-pointer">
             <LikeButton
               postId={postId}

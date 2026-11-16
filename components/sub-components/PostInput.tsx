@@ -77,7 +77,7 @@ export default function PostInput() {
   ];
 
   return (
-    <div className="my-12 w-full">
+    <div className="my-8 w-full">
       <div className="flex items-center mt-12 gap-4">
         <Image
           src={"/assets/Logo.png"}

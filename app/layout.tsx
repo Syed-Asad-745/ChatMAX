@@ -19,7 +19,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={` h-full antialiased`}
     >
-      <body className="min-h-screen flex flex-col bg-white text-black dark:bg-black dark:text-white bg-[url('/assets/lightbg.webp')] dark:bg-[url('/assets/darkbg.webp')] bg-fixed bg-cover bg-no-repeat">
+      <body className="min-h-dvh flex flex-col bg-white text-black dark:bg-black dark:text-white bg-[url('/assets/lightbg.webp')] dark:bg-[url('/assets/darkbg.webp')] bg-center bg-fixed bg-cover bg-no-repeat">
         <StoreProvider>
           <div className="flex min-h-screen max-w-360 w-full self-center bg-transparent">
             <Sidebar />

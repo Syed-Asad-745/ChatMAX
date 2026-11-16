@@ -1,3 +1,5 @@
+// lib/auth/session.ts
+
 import "server-only";
 
 import { cookies } from "next/headers";
@@ -16,7 +18,7 @@ export async function getCurrentUser() {
 
   const result = await pool.query(
     `
-    SELECT users.id, users.username, users.email, users.bio
+    SELECT users.id, users.username, users.email, users.bio, users.profile_pic_url
     FROM sessions
     JOIN users ON sessions.user_id = users.id
     WHERE sessions.token_hash = $1

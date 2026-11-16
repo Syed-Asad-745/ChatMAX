@@ -1,3 +1,5 @@
+// app/api/auth/login/route.ts
+
 import { NextResponse } from "next/server";
 import { pool } from "@/lib/db";
 import { verifyPassword } from "@/lib/auth/password";
