@@ -29,13 +29,19 @@ export default async function ProfilePage() {
         Profile
       </div>
       <div className="w-full my-12 flex flex-col">
-        <div className="flex my-6">
+        <div className="flex my-6 items-center">
           <div>
             <ProfilePicture profilePicUrl={userData.profile_pic_url} />
           </div>
-          <div className="ml-6 mt-4">
-            <h2>Username: {userData.username}</h2>
-            <h2>Email: {userData.email}</h2>
+          <div className="ml-6">
+            <h2>
+              <span className="text-gray-600 dark:text-gray-400">Username: </span>
+              {userData.username}
+            </h2>
+            <h2>
+              <span className="text-gray-600 dark:text-gray-400">Email: </span>
+              {userData.email}
+            </h2>
           </div>
         </div>
         <div className="sm:mx-4">

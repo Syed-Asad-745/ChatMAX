@@ -59,7 +59,7 @@ export default function Sidebar() {
         ></div>
       )}
       <nav
-        className={`${sidebarState ? "flex" : "hidden"} fixed top-0 left-0 z-2 min-h-dvh sm:min-h-[calc(100vh-32px)] min-w-fit p-6 sm:flex flex-col sm:sticky sm:top-4 sm:my-4 sm:ml-4 font-extrabold sm:rounded-3xl sm:border-2 bg-white/80 sm:border-white dark:bg-black/80  dark:border-black`}
+        className={`${sidebarState ? "translate-x-0" : "-translate-x-full"} fixed top-0 left-0 z-2 min-h-dvh sm:min-h-[calc(100vh-32px)] min-w-fit p-6 sm:translate-x-0 flex flex-col sm:sticky sm:top-4 sm:my-4 sm:ml-4 font-extrabold sm:rounded-3xl sm:border-2 bg-white/80 sm:border-white dark:bg-black/80  dark:border-black transition-transform`}
       >
         <Image
           src={"/assets/FullLogo.png"}
